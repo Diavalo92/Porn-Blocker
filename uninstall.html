@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Wait!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      text-align: center;
+      background-color: #f0f0f0;
+    }
+    h1 {
+      color: #e74c3c;
+    }
+    .confirm-btn {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .confirm-btn:disabled {
+      background-color: #95a5a6;
+      cursor: not-allowed;
+    }
+    .confirm-btn:hover:not(:disabled) {
+      background-color: #2980b9;
+    }
+    .count {
+      font-size: 24px;
+      font-weight: bold;
+      color: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+  <h1>Are you sure you want to uninstall?</h1>
+  <p>This extension helps block unwanted sites and enforce SafeSearch.</p>
+  <p id="confirm-text">Click the button <span class="count" id="count">5</span> more times to confirm.</p>
+  <button class="confirm-btn" id="confirm-btn">Yes, I'm sure</button>
+  <button class="confirm-btn" id="cancel-btn" onclick="window.close()">No, keep it</button>
+
+  <script>
+    let confirmCount = 5;
+    const confirmBtn = document.getElementById('confirm-btn');
+    const countSpan = document.getElementById('count');
+    const confirmText = document.getElementById('confirm-text');
+
+    confirmBtn.addEventListener('click', () => {
+      confirmCount--;
+      if (confirmCount > 0) {
+        countSpan.textContent = confirmCount;
+        confirmText.textContent = `Click the button ${confirmCount} more time${confirmCount > 1 ? 's' : ''} to confirm.`;
+      } else {
+        confirmText.textContent = "Okay, you can now uninstall the extension from Chrome's extensions page.";
+        confirmBtn.disabled = true;
+      }
+    });
+  </script>
+</body>
+</html>

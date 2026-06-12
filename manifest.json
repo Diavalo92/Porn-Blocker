@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Porn Blocker",
+  "version": "1.0",
+  "description": "Automatically closes Porn sites tabs and enforces SafeSearch.",
+  "permissions": ["tabs", "declarativeNetRequest"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
+
